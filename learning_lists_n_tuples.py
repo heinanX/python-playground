@@ -24,7 +24,7 @@ lucky_numbers.reverse()
 print(lucky_numbers)
 print(friends2)
 
-""" tuples are immutable and their order is preserved. Values stored inside lists remain their mutability"""
+# tuples are immutable and their order is preserved. Values stored inside lists remain their mutability
 
 my_tuple = ('a', 'b', [1, 2, 3])
 print(my_tuple)
