@@ -21,10 +21,10 @@ def game_start():
             print('must be a yes or no answer')
 
 def set_max_num():
-     max_num = int(input('First, enter a number (between 10-999): '))
      while True:
+        max_num = int(input('First, enter a number (between 10-999): '))
         try:
-            if input < 999 and max_num > 10:
+            if max_num < 999 and max_num > 10:
                 win_num = random.randint(1, max_num)
                 return win_num
             else:
