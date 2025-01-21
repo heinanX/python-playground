@@ -1,9 +1,17 @@
-max_num = 0
-attempts = 0
+import random
+
+# Smaller functions
+def read_rules():
+        init_rules = input('Do you need the rules? (y/n) ').lower()
+        if init_rules == 'yes' or init_rules == 'y':
+            print('Choose a number between 10 and 999, then try to guess the correct one! The fewer tries you take, the higher your score. Need help? Hints are available!')
+            return
+        else:
+            return
 
 def game_start():
     while True:
-        init_game = input('So, do you want to play? (yes/no)').lower()
+        init_game = input('So, do you want to play? (y/n) ').lower()
         if init_game == 'yes' or init_game == 'y':
             print('Wooo! Let\'s go!')
             return True
@@ -11,32 +19,40 @@ def game_start():
             return False
         else:
             print('must be a yes or no answer')
-    
-def read_rules():
-        init_rules = input('Do you need the rules? (yes/no)').lower()
-        if init_rules == 'yes' or init_rules == 'y':
-            print('Choose a number between 10 and 999, then try to guess the correct one! The fewer tries you take, the higher your score. Need help? Hints are available!')
-            return
-        else:
-            return
 
+def set_max_num():
+     max_num = int(input('First, enter a number (between 10-999): '))
+     while True:
+        try:
+            if input < 999 and max_num > 10:
+                win_num = random.randint(1, max_num)
+                return win_num
+            else:
+                print('please enter a number between 10 - 999')
+        except ValueError:
+            print('That\'s not a valid number, buddy. Try again :3')
 
-print('Welcome to Guess the Number')
+# Game
+print('Welcome to Guess the Number!')
 read_rules()
+
 if game_start():
-    max_num = int(input('First, enter a number (between 10-999):'))
+    win_num = set_max_num()
+    print(win_num)
     print('Great work! Now it\'s time to start guessing!')
+    attempts = 0
+
     while True:
-        guess = int(input('enter your guess'))
+        guess = int(input('Enter your guess: '))
         attempts += 1
-        if guess == max_num:
-            print('Congratulations you won! You managed to score:')
+        if guess == win_num:
+            print('Congratulations you won! You managed to score: ' + str(attempts) )
             break
         else:
-            if max_num > guess:
-                print('a little higher than that')
+            if win_num > guess:
+                print('A little higher than that')
             else:
-                print('a little bit lower than that')
+                print('A little bit lower than that')
 else:
     print('D\'aww that\'s too bad...')
 
